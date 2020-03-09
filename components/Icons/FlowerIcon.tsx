@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import Props from './Icon';
 
-const HomeIcon = ({ width, height, color }: Props) => (
+const HomeIcon: React.FunctionComponent<Props> = ({ width, height, color }: Props) => (
   <Svg width={width} height={height} viewBox="0 0 30 28" fill="none">
     <Path
       d="M15.5 24.5055C27 24.0056 28.2917 15.7956 29 9.56016C24.2778 8.31308 15.5 8.32944 15.5 18.5056"
