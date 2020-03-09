@@ -4,8 +4,8 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb-typescript',
   ],
   globals: {
     Atomics: 'readonly',
@@ -18,23 +18,26 @@ module.exports = {
     },
     ecmaVersion: 2018,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   plugins: [
     '@typescript-eslint',
   ],
+  settings: {
+    'import/resolver': 'webpack',
+  },
   rules: {
     'no-use-before-define': ['error', {
       'functions': false,
       'classes': false,
       'variables': false,
     }],
+    '@typescript-eslint/no-use-before-define': 0,
     'global-require': 0,
-    'react/jsx-filename-extension': [0, { 'extensions': ['.ts', '.tsx'] }],
+    'react/jsx-filename-extension': [0],
     'import/extensions': ['error', 'never'],
-    'import/no-unresolved': [
-      2, {
-        'ignore': ['\.ts', '\.tsx'],
-      }
-    ]
+    'import/no-unresolved': 0,
+    'import/prefer-default-export': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };
