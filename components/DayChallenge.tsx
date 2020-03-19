@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
   SafeAreaView,
@@ -9,6 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import AutoHeightImage from 'react-native-auto-height-image';
+import CustomText from './CustomText';
 
 type Props = {
   readonly day: number;
@@ -21,13 +21,12 @@ const DayChallenge: React.FunctionComponent<Props> = ({ day, name, img }: Props)
     <AutoHeightImage source={img} width={Dimensions.get('window').width} />
     <View style={styles.content}>
       <View style={styles.dayContainer}>
-        <Text style={styles.day}>
-          day
-          {day}
-        </Text>
+        <CustomText style={styles.day} semibold>
+          {`day ${day}`}
+        </CustomText>
       </View>
       <View style={styles.nameContainer}>
-        <Text style={styles.name}>{name}</Text>
+        <CustomText style={styles.name} semibold>{name}</CustomText>
       </View>
     </View>
   </SafeAreaView>
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
   },
   content: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 15 : StatusBarManager.HEIGHT + 15,
+    top: (Platform.OS === 'ios' || !StatusBarManager) ? 15 : StatusBarManager.HEIGHT + 15,
     left: 15,
   },
   dayContainer: {
